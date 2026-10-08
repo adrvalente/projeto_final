@@ -1,0 +1,19 @@
+# ScoutGest - Git ignore
+
+# Backups
+_backup_\
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editores
+.vscode/
+.idea/
+
+# Ficheiros temporários
+*.tmp
+*.temp
+*.log
+*~
