@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="scoutgest" name="ScoutGest - Modelo Relacional">
+    <mxGraphModel dx="1076" dy="734" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="swimlane;html=1;startSize=38;horizontal=1;rounded=1;arcSize=8;fillColor=#dbeafe;swimlaneFillColor=#ffffff;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;fontStyle=1;align=center;" value="tutores" vertex="1">
+          <mxGeometry height="178" width="310" x="865" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="t_0" parent="t" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="🔑  id_tutor : int(11)" vertex="1">
+          <mxGeometry height="35" width="310" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="t_1" parent="t" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   nome : varchar(120)" vertex="1">
+          <mxGeometry height="35" width="310" y="73" as="geometry" />
+        </mxCell>
+        <mxCell id="t_2" parent="t" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   telefone : varchar(20)" vertex="1">
+          <mxGeometry height="35" width="310" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="t_3" parent="t" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   email : varchar(150)" vertex="1">
+          <mxGeometry height="35" width="310" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="e" parent="1" style="swimlane;html=1;startSize=38;horizontal=1;rounded=1;arcSize=8;fillColor=#dbeafe;swimlaneFillColor=#ffffff;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;fontStyle=1;align=center;" value="elementos" vertex="1">
+          <mxGeometry height="283" width="320" x="210" y="99.5" as="geometry" />
+        </mxCell>
+        <mxCell id="e_0" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="🔑  id_elemento : int(11)" vertex="1">
+          <mxGeometry height="35" width="320" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="🔗  id_tutor : int(11)" vertex="1">
+          <mxGeometry height="35" width="320" y="73" as="geometry" />
+        </mxCell>
+        <mxCell id="e_2" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   nome : varchar(120)" vertex="1">
+          <mxGeometry height="35" width="320" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="e_3" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   numero_censo : varchar(20)" vertex="1">
+          <mxGeometry height="35" width="320" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="e_4" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   data_nascimento : date" vertex="1">
+          <mxGeometry height="35" width="320" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="e_5" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   seccao : varchar(30)" vertex="1">
+          <mxGeometry height="35" width="320" y="213" as="geometry" />
+        </mxCell>
+        <mxCell id="e_6" parent="e" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   observacoes : text" vertex="1">
+          <mxGeometry height="35" width="320" y="248" as="geometry" />
+        </mxCell>
+        <mxCell id="u" parent="1" style="swimlane;html=1;startSize=38;horizontal=1;rounded=1;arcSize=8;fillColor=#dbeafe;swimlaneFillColor=#ffffff;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;fontStyle=1;align=center;" value="utilizadores" vertex="1">
+          <mxGeometry height="318" width="335" x="530" y="438" as="geometry" />
+        </mxCell>
+        <mxCell id="u_0" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="🔑  id_utilizador : int(11)" vertex="1">
+          <mxGeometry height="35" width="335" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="u_1" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   nome : varchar(100)" vertex="1">
+          <mxGeometry height="35" width="335" y="73" as="geometry" />
+        </mxCell>
+        <mxCell id="u_2" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   email : varchar(150)" vertex="1">
+          <mxGeometry height="35" width="335" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="u_3" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   password_hash : varchar(255)" vertex="1">
+          <mxGeometry height="35" width="335" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="u_4" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   consentimento_em : datetime" vertex="1">
+          <mxGeometry height="35" width="335" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="u_5" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="   criado_em : datetime" vertex="1">
+          <mxGeometry height="35" width="335" y="213" as="geometry" />
+        </mxCell>
+        <mxCell id="u_6" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;" value="   tipo : enum(&#39;utilizador&#39;,&#39;dirigente&#39;)" vertex="1">
+          <mxGeometry height="35" width="335" y="248" as="geometry" />
+        </mxCell>
+        <mxCell id="u_7" parent="u" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#64748b;fillColor=#ffffff;fontColor=#1e293b;align=left;verticalAlign=middle;spacingLeft=10;fontSize=13;fillColor=#f1f5f9;" value="🔗  id_tutor : int(11)" vertex="1">
+          <mxGeometry height="35" width="335" y="283" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1" edge="1" parent="1" source="t" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22c55e;strokeWidth=2;fontColor=#15803d;fontSize=12;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=1;entryY=0.2;" target="e" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
