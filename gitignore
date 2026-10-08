@@ -1,7 +1,7 @@
 # ScoutGest - Git ignore
 
 # Backups
-_backup_\
+_backup_/
 
 # Sistema operativo
 .DS_Store
