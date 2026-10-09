@@ -1,7 +1,7 @@
 <?php
 
 //ativar a sessao:
-session_star();
+session_start();
 
 //ligar a db;
 require __DIR__.'/../config/db.php';
