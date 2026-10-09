@@ -16,7 +16,9 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body>
     <header class="cabecalho">
-        <img src="img/logotipo_transp.png" alt="ScoutGest" class="logotipo">
+        <div class="logo-container">
+            <img src="img/logotipo_transp.png" alt="ScoutGest" class="logotipo">
+        </div>
     </header>
 
     <main class="conteudo">

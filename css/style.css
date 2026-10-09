@@ -28,9 +28,18 @@ body {
     text-align: center;
 }
 
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sg-white);
+    padding: 24px 32px;
+    border-radius: 16px;
+}
+
 .logotipo {
     display: block;
-    width: 190px;
+    width: 260px;
     max-width: 100%;
     height: auto;
     margin: 0 auto;
@@ -80,7 +89,16 @@ a:hover { color: var(--sg-dark); }
 
 @media (max-width: 600px) {
     .cabecalho { padding: 14px 18px; }
-    .logotipo { width: 150px; }
+    .logo-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sg-white);
+    padding: 24px 32px;
+    border-radius: 16px;
+}
+
+.logotipo { width: 150px; }
     .conteudo { margin: 30px auto; padding: 0 16px; }
     .cartao { padding: 26px 22px; }
     h1 { font-size: 1.6rem; }
