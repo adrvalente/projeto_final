@@ -331,3 +331,15 @@ footer a:hover {
         font-size: 12px;
     }
 }
+/* GitHub Pages — Demonstração estática */
+
+.aviso-demo {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: #607568;
+}
+
+.aviso-demo a {
+    color: var(--sg-primary);
+}
