@@ -1,0 +1,105 @@
+/* ScoutGest V1.0.1 — CSS Integração */
+:root {
+    --sg-forest: #003D30;
+    --sg-dark: #14532D;
+    --sg-primary: #2E7D32;
+    --sg-light: #A8C49A;
+    --sg-field: #4D8B3A;
+    --sg-accent: #FFC247;
+    --sg-white: #FFFFFF;
+    --sg-background: #F5F8F4;
+    --sg-text: #24372D;
+    --sg-border: #DFE8DD;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--sg-background);
+    color: var(--sg-text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+.cabecalho {
+    background: var(--sg-forest);
+    padding: 18px 24px;
+    text-align: center;
+}
+
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sg-white);
+    padding: 24px 32px;
+    border-radius: 16px;
+}
+
+.logotipo {
+    display: block;
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.conteudo {
+    max-width: 850px;
+    margin: 64px auto;
+    padding: 0 24px;
+}
+
+.cartao {
+    background: var(--sg-white);
+    border: 1px solid var(--sg-border);
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 61, 48, 0.06);
+}
+
+h1 {
+    margin: 0 0 16px;
+    color: var(--sg-forest);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+p { margin: 0 0 20px; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--sg-primary); }
+a:hover { color: var(--sg-dark); }
+
+.btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 8px;
+    background: var(--sg-primary);
+    color: var(--sg-white);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover { background: var(--sg-dark); color: var(--sg-white); }
+.btn.secundario { background: var(--sg-white); color: var(--sg-forest); border: 1px solid var(--sg-border); }
+.btn.secundario:hover { background: var(--sg-background); }
+
+@media (max-width: 600px) {
+    .cabecalho { padding: 14px 18px; }
+    .logo-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sg-white);
+    padding: 24px 32px;
+    border-radius: 16px;
+}
+
+.logotipo { width: 150px; }
+    .conteudo { margin: 30px auto; padding: 0 16px; }
+    .cartao { padding: 26px 22px; }
+    h1 { font-size: 1.6rem; }
+}
