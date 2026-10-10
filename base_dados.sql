@@ -13,7 +13,7 @@ CREATE TABLE tutores (
     id_tutor INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
-    email VARCHAR(150) NULL
+    email VARCHAR(150) NOT NULL UNIQUE
 );
 
 -- Utilizadores da aplicação. Um utilizador comum pode ficar associado a um tutor.
@@ -35,13 +35,44 @@ CREATE TABLE elementos (
     id_elemento INT AUTO_INCREMENT PRIMARY KEY,
     id_tutor INT NOT NULL,
     nome VARCHAR(120) NOT NULL,
-    numero_censo VARCHAR(20) NULL UNIQUE,
+    numero_censo VARCHAR(20) NOT NULL UNIQUE,
     data_nascimento DATE NULL,
     seccao VARCHAR(30) NOT NULL,
     observacoes TEXT NULL,
     CONSTRAINT fk_elementos_tutores FOREIGN KEY (id_tutor)
         REFERENCES tutores (id_tutor) ON DELETE RESTRICT
 );
+
+-- Validação de data de nascimento para não permitir datas futuras ao criar um elemento
+DELIMITER $$
+
+CREATE TRIGGER validar_data_nascimento_insert
+BEFORE INSERT ON elementos
+FOR EACH ROW
+BEGIN
+    IF NEW.data_nascimento > CURDATE() THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'A data de nascimento não pode ser futura.';
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- Validação de data de nascimento para não permitir datas futuras ao atualizar um elemento
+DELIMITER $$
+
+CREATE TRIGGER validar_data_nascimento_update
+BEFORE UPDATE ON elementos
+FOR EACH ROW
+BEGIN
+    IF NEW.data_nascimento > CURDATE() THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'A data de nascimento não pode ser futura.';
+    END IF;
+END$$
+
+DELIMITER ;
+
 
 INSERT INTO tutores (nome, telefone, email) VALUES
 ('João Ferreira', '912345601', 'joao.ferreira@example.com'),
