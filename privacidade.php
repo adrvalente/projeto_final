@@ -2,12 +2,12 @@
 /**
  * ScoutGest — Política de Privacidade
  * UC00615 · Stack A (PHP + PDO + MySQL/MariaDB)
- * Rever os campos de configuração antes da publicação.
  */
 declare(strict_types=1);
 
+// Variáveis para a política de privacidade
 $nomeAgrupamento = 'Agrupamento 676 Cristo-Rei';
-$emailPrivacidade = ''; // TODO: inserir contacto oficial para pedidos RGPD
+$emailPrivacidade = 'geral.676@escutismo.pt';
 $dataAtualizacao = '10/10/2026';
 
 function e(string $value): string {
@@ -22,32 +22,7 @@ function e(string $value): string {
     <meta name="robots" content="noindex, follow">
     <title>Política de Privacidade | ScoutGest</title>
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Estilos locais para não alterar o CSS existente do ScoutGest. */
-        :root { --sg-green:#24543d; --sg-green-dark:#173b2c; --sg-gold:#d4a548; --sg-bg:#f5f7f5; --sg-text:#23352c; --sg-muted:#5d6d63; }
-        body { margin:0; background:var(--sg-bg); color:var(--sg-text); font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif; line-height:1.7; }
-        .privacy-header { background:var(--sg-green-dark); color:#fff; padding:18px 24px; }
-        .privacy-header-inner { max-width:1000px; margin:auto; display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; }
-        .privacy-brand { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:750; letter-spacing:.2px; }
-        .privacy-brand span { color:var(--sg-gold); }
-        .privacy-back { color:#fff; text-decoration:none; border:1px solid #ffffff80; padding:7px 14px; border-radius:9px; }
-        .privacy-back:hover,.privacy-back:focus-visible { background:#ffffff1b; }
-        .privacy-wrap { max-width:1000px; margin:36px auto 60px; padding:0 20px; }
-        .privacy-intro { margin-bottom:25px; }
-        .privacy-intro h1 { margin:0 0 8px; font-size:clamp(1.8rem,4vw,2.5rem); color:var(--sg-green-dark); line-height:1.2; }
-        .privacy-updated { color:var(--sg-muted); font-size:.95rem; }
-        .privacy-card { background:#fff; border:1px solid #e0e7e1; border-radius:15px; padding:clamp(22px,4vw,38px); box-shadow:0 5px 20px #172f1c0a; }
-        .privacy-card section+section { border-top:1px solid #e9eeea; margin-top:24px; padding-top:22px; }
-        .privacy-card h2 { color:var(--sg-green); font-size:1.17rem; line-height:1.35; margin:0 0 10px; }
-        .privacy-card p { margin:0 0 12px; }
-        .privacy-card ul { margin:8px 0 12px; padding-left:24px; }
-        .privacy-card li { margin:5px 0; }
-        .privacy-card a { color:var(--sg-green); text-underline-offset:3px; }
-        .privacy-note { background:#f3f7f3; border-left:4px solid var(--sg-gold); padding:13px 17px; border-radius:5px; }
-        .privacy-footer { text-align:center; color:var(--sg-muted); font-size:.9rem; margin-top:26px; }
-        :focus-visible { outline:3px solid var(--sg-gold); outline-offset:3px; }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="privacy-header">
@@ -65,7 +40,7 @@ function e(string $value): string {
     <article class="privacy-card">
         <section>
             <h2>1. Responsável pelo tratamento</h2>
-            <p>O responsável pelo tratamento dos dados pessoais deve ser identificado pela entidade que determina as finalidades e os meios de utilização do ScoutGest. A identificação formal e os contactos devem ser confirmados antes da utilização em produção.</p>
+            <p>O responsável pelo tratamento dos dados pessoais é o chefe de agrupamento.</p>
             <p><strong>Entidade de referência:</strong> <?= e($nomeAgrupamento) ?>.</p>
             <?php if ($emailPrivacidade !== ''): ?>
                 <p><strong>Contacto para privacidade:</strong> <a href="mailto:<?= e($emailPrivacidade) ?>"><?= e($emailPrivacidade) ?></a></p>
@@ -75,7 +50,7 @@ function e(string $value): string {
         </section>
         <section>
             <h2>2. Dados pessoais tratados</h2>
-            <p>Consoante as funcionalidades utilizadas e os campos efetivamente preenchidos, a aplicação poderá tratar:</p>
+            <p>A aplicação poderá tratar:</p>
             <ul>
                 <li><strong>Elementos:</strong> nome, número de censo, data de nascimento, secção e observações;</li>
                 <li><strong>Tutores ou encarregados de educação:</strong> nome, telefone e endereço de correio eletrónico;</li>
