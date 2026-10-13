@@ -1,0 +1,345 @@
+
+/* ============================================================
+   ScoutGest — Integração Frontend + Backend
+   CSS principal
+   Base: ScoutGest V1.0.1
+   ============================================================ */
+
+/* CORES DO SCOUTGEST */
+
+:root {
+    --sg-forest: #003D30;
+    --sg-dark: #14532D;
+    --sg-primary: #2E7D32;
+    --sg-light: #A8C49A;
+    --sg-field: #4D8B3A;
+    --sg-accent: #FFC247;
+    --sg-white: #FFFFFF;
+    --sg-background: #F5F8F4;
+    --sg-text: #24372D;
+    --sg-border: #DFE8DD;
+}
+
+/* CONFIGURAÇÃO GERAL */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--sg-background);
+    color: var(--sg-text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    background: var(--sg-forest);
+    padding: 18px 24px;
+    text-align: center;
+}
+
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sg-white);
+    padding: 24px 32px;
+    border-radius: 16px;
+}
+
+.logo-container a {
+    display: block;
+    text-decoration: none;
+}
+
+.logotipo {
+    display: block;
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* MENU DE NAVEGAÇÃO */
+
+.menu-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 18px;
+}
+
+.menu-navegacao a {
+    color: var(--sg-white);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.menu-navegacao a:hover {
+    color: var(--sg-white);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.menu-navegacao .ola {
+    color: var(--sg-light);
+    font-size: 14px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.conteudo {
+    width: 100%;
+    max-width: 850px;
+    margin: 64px auto 32px;
+    padding: 0 24px;
+    flex: 1 0 auto;
+}
+
+/* CARTÕES */
+
+.cartao {
+    background: var(--sg-white);
+    border: 1px solid var(--sg-border);
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 61, 48, 0.06);
+}
+
+/* TIPOGRAFIA */
+
+h1 {
+    margin: 0 0 16px;
+    color: var(--sg-forest);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+p {
+    margin: 0 0 20px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--sg-primary);
+}
+
+a:hover {
+    color: var(--sg-dark);
+}
+
+/* BOTÕES GERAIS */
+
+.btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 8px;
+    background: var(--sg-primary);
+    color: var(--sg-white);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--sg-dark);
+    color: var(--sg-white);
+}
+
+.btn.secundario {
+    background: var(--sg-white);
+    color: var(--sg-forest);
+    border: 1px solid var(--sg-border);
+}
+
+.btn.secundario:hover {
+    background: var(--sg-background);
+}
+
+/* BOTÕES DA PÁGINA INICIAL */
+
+.acoes-inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 24px auto 0;
+}
+
+.btn-acao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btn-entrar {
+    background: var(--sg-forest);
+    color: var(--sg-white);
+    border: 2px solid var(--sg-forest);
+}
+
+.btn-entrar:hover {
+    background: var(--sg-dark);
+    border-color: var(--sg-dark);
+    color: var(--sg-white);
+    transform: translateY(-2px);
+}
+
+.btn-registar {
+    background: var(--sg-white);
+    color: var(--sg-forest);
+    border: 2px solid var(--sg-forest);
+}
+
+.btn-registar:hover {
+    background: var(--sg-light);
+    color: var(--sg-forest);
+    transform: translateY(-2px);
+}
+
+/* MENSAGENS DE SESSÃO */
+
+.msg {
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    background: var(--sg-white);
+    border: 1px solid var(--sg-border);
+}
+
+.msg.sucesso {
+    background: #E8F5E9;
+    color: #1B5E20;
+    border-color: #A5D6A7;
+}
+
+.msg.erro {
+    background: #FDECEC;
+    color: #9B1C1C;
+    border-color: #F5B5B5;
+}
+
+/* RODAPÉ */
+
+footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 16px;
+    background: var(--sg-white);
+    border-top: 1px solid var(--sg-border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--sg-text);
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--sg-primary);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+
+    .cabecalho {
+        padding: 14px 18px;
+    }
+
+    .logo-container {
+        padding: 16px 20px;
+        border-radius: 12px;
+    }
+
+    .logotipo {
+        width: 150px;
+    }
+
+    .menu-navegacao {
+        gap: 8px 12px;
+        margin-top: 14px;
+    }
+
+    .menu-navegacao a {
+        font-size: 13px;
+        padding: 7px 9px;
+    }
+
+    .conteudo {
+        margin: 30px auto 24px;
+        padding: 0 16px;
+    }
+
+    .cartao {
+        padding: 26px 22px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .acoes-inicio {
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 12px;
+    }
+
+    .btn-acao {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    footer {
+        padding: 18px 12px;
+        font-size: 12px;
+    }
+}
+/* GitHub Pages — Demonstração estática */
+
+.aviso-demo {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: #607568;
+}
+
+.aviso-demo a {
+    color: var(--sg-primary);
+}
