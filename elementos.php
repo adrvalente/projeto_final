@@ -2,6 +2,7 @@
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
+exige_dirigente();
 
 // BLOCO 2: apanhar o texto da pesquisa
 $q = trim($_GET['q'] ?? '');

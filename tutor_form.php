@@ -2,6 +2,7 @@
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
+exige_dirigente();
 
 // BLOCO 2: valores de partida (sem id = criar; com id = editar)
 $id    = (int) ($_GET['id'] ?? 0);

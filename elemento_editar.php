@@ -3,6 +3,7 @@
 require 'includes/inicio.php';
 require 'includes/auth.php';
 require 'includes/elemento_funcoes.php';
+exige_dirigente();
 
 // BLOCO 2: qual é o elemento a editar e valores de partida
 $id    = (int) ($_GET['id'] ?? 0);
