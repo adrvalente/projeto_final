@@ -1,0 +1,51 @@
+<?php
+require 'includes/inicio.php';
+require 'includes/auth.php';
+require 'includes/elemento_funcoes.php';
+
+$id    = (int) ($_GET['id'] ?? 0);
+$erros = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $elemento = ler_elemento();
+    $erros = validar_elemento($pdo, $elemento);
+
+    if (!$erros) {
+        $stmt = $pdo->prepare(
+            'UPDATE elementos
+             SET id_tutor = ?, nome = ?, data_nascimento = ?, seccao = ?
+             WHERE id_elemento = ?'
+        );
+        $stmt->execute([
+            $elemento['id_tutor'],
+            $elemento['nome'],
+            $elemento['data_nascimento'],
+            $elemento['seccao'] ?: null,
+            $id,
+        ]);
+
+        mensagem('sucesso', 'Alterações guardadas.');
+        header("Location: elemento_ver.php?id=$id");
+        exit;
+    }
+} else {
+    // GET: carregar o elemento para preencher o formulário
+    $stmt = $pdo->prepare('SELECT * FROM elementos WHERE id_elemento = ?');
+    $stmt->execute([$id]);
+    $elemento = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$elemento) {
+        mensagem('erro', 'Esse elemento não existe.');
+        header('Location: elementos.php');
+        exit;
+    }
+}
+
+$tutores = lista_tutores($pdo);
+$acao    = "elemento_editar.php?id=$id";
+$titulo  = 'Editar elemento';
+require 'includes/cabecalho.php';
+?>
+<h1>Editar elemento</h1>
+<?php require 'includes/elemento_form.php'; ?>
+<?php require 'includes/rodape.php'; ?>
