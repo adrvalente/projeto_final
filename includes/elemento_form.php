@@ -3,7 +3,7 @@
 
 <form method="post" action="<?= $acao ?>" id="form-principal" class="formulario" novalidate>
     <label for="nome">Nome</label>
-    <input type="text" id="nome" name="nome" maxlength="100" required
+    <input type="text" id="nome" name="nome" maxlength="120" required
            value="<?= htmlspecialchars($elemento['nome']) ?>">
 
     <label for="id_tutor">Tutor</label>
@@ -15,13 +15,20 @@
         <?php endforeach; ?>
     </select>
 
-    <label for="data_nascimento">Data de nascimento</label>
-    <input type="date" id="data_nascimento" name="data_nascimento" required
-           value="<?= htmlspecialchars($elemento['data_nascimento']) ?>">
+    <label for="seccao">Secção</label>
+    <input type="text" id="seccao" name="seccao" maxlength="30" required
+           value="<?= htmlspecialchars($elemento['seccao']) ?>">
 
-    <label for="seccao">Secção (opcional)</label>
-    <input type="text" id="seccao" name="seccao" maxlength="30"
-           value="<?= htmlspecialchars($elemento['seccao'] ?? '') ?>">
+    <label for="numero_censo">Número de censo (opcional)</label>
+    <input type="text" id="numero_censo" name="numero_censo" maxlength="20"
+           value="<?= htmlspecialchars($elemento['numero_censo'] ?? '') ?>">
+
+    <label for="data_nascimento">Data de nascimento (opcional)</label>
+    <input type="date" id="data_nascimento" name="data_nascimento"
+           value="<?= htmlspecialchars($elemento['data_nascimento'] ?? '') ?>">
+
+    <label for="observacoes">Observações (opcional)</label>
+    <textarea id="observacoes" name="observacoes" rows="4"><?= htmlspecialchars($elemento['observacoes'] ?? '') ?></textarea>
 
     <button type="submit">Guardar</button>
 </form>
