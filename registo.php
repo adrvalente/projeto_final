@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros[] = 'O nome é obrigatório e não pode ter mais de 100 caracteres.';
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 150) {
         $erros[] = 'O email não é válido.';
     }
 
@@ -64,15 +64,17 @@ require 'includes/cabecalho.php';
 
 <?php require 'includes/erros.php'; ?>
 
-<form action="registo.php" method="post" novalidate>
+<form action="registo.php" method="post" id="form-principal" novalidate>
     <p>
         <label for="nome">Nome</label><br>
-        <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($nome) ?>" required>
+        <input type="text" id="nome" name="nome" maxlength="100"
+               value="<?= htmlspecialchars($nome) ?>" required>
     </p>
 
     <p>
         <label for="email">Email</label><br>
-        <input type="email" id="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
+        <input type="email" id="email" name="email" maxlength="150"
+               value="<?= htmlspecialchars($email) ?>" required>
     </p>
 
     <p>
@@ -81,9 +83,9 @@ require 'includes/cabecalho.php';
     </p>
 
     <p>
-        <label>
-            <input type="checkbox" name="consentimento" value="1">
-            Aceito a política de privacidade.
+        <label for="consentimento">
+            <input type="checkbox" id="consentimento" name="consentimento" value="1" required>
+            Li e aceito a <a href="privacidade.php" target="_blank">política de privacidade</a>.
         </label>
     </p>
 
