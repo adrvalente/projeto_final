@@ -1447,6 +1447,55 @@ footer a:hover {
     background: #fdecec;
     color: #9b1c1c;
 }
+
+/* ============================================================
+   ScoutGest V2.1 — Filtros da Gestão de Utilizadores
+   ============================================================ */
+
+.gestao-filtros {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.gestao-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.gestao-filtro label {
+    font-weight: 600;
+    color: var(--sg-text, #24352c);
+}
+
+.gestao-select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd5cc;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--sg-text, #24352c);
+    font: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.gestao-select:focus {
+    outline: 2px solid var(--sg-primary, #2e7d32);
+    outline-offset: 1px;
+}
+
+@media (max-width: 600px) {
+    .gestao-filtros {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
 @media (max-width: 700px) {
     .gestao-utilizadores { padding: 26px 22px; }
     .gestao-topo h1 { font-size: 1.5rem; }
