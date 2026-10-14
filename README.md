@@ -12,6 +12,3 @@ Projeto Final do CET 25.0462 — aplicação de gestão dos elementos do Agrupam
 Colocar a pasta do projeto em `htdocs` do XAMPP, iniciar o Apache e abrir `http://localhost/scoutgest/` (ajustar o endereço ao nome da pasta).
 
 Nesta fase, a página inicial é demonstrativa; as restantes funcionalidades serão desenvolvidas em versões futuras.
-
-
-## teste

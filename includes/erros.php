@@ -9,4 +9,4 @@
         </ul>
     </div>
 <?php endif; ?>
-<ul id="erros-js" class="msg erro"></ul>
+

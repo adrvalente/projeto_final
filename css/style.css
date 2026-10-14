@@ -1,12 +1,7 @@
-
 /* ============================================================
    ScoutGest — Integração Frontend + Backend
-   CSS principal
-   Base: ScoutGest V1.0.1
+   CSS principal | Base: ScoutGest V1.0.1
    ============================================================ */
-
-/* CORES DO SCOUTGEST */
-
 :root {
     --sg-forest: #003D30;
     --sg-dark: #14532D;
@@ -18,18 +13,15 @@
     --sg-background: #F5F8F4;
     --sg-text: #24372D;
     --sg-border: #DFE8DD;
+    --sg-danger: #9e2c2c;
+    --sg-dangerdark: #570808;
 }
-
-/* CONFIGURAÇÃO GERAL */
-
 * {
     box-sizing: border-box;
 }
-
 html {
     min-height: 100%;
 }
-
 body {
     margin: 0;
     min-height: 100vh;
@@ -40,48 +32,53 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
 }
-
-/* CABEÇALHO */
-
+/* ============================================================
+   CABEÇALHO HORIZONTAL
+   ============================================================ */
 .cabecalho {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 32px;
     background: var(--sg-forest);
-    padding: 18px 24px;
-    text-align: center;
 }
-
 .logo-container {
-    display: inline-flex;
+    display: flex;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    padding: 6px 12px;
     background: var(--sg-white);
-    padding: 24px 32px;
-    border-radius: 16px;
+    border-radius: 10px;
 }
-
 .logo-container a {
-    display: block;
+    display: flex;
+    align-items: center;
     text-decoration: none;
 }
-
 .logotipo {
     display: block;
-    width: 260px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
+    width: auto;
+    max-width: 170px;
+    height: 60px;
+    object-fit: contain;
 }
-
-/* MENU DE NAVEGAÇÃO */
-
+/* ============================================================
+   MENU DESKTOP
+   ============================================================ */
 .menu-navegacao {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
-    gap: 12px 24px;
-    margin-top: 18px;
+    gap: 8px 16px;
+    margin: 0 0 0 auto;
 }
-
 .menu-navegacao a {
     color: var(--sg-white);
     font-size: 14px;
@@ -89,21 +86,24 @@ body {
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 6px;
+    white-space: nowrap;
     transition: background-color 0.2s ease;
 }
-
 .menu-navegacao a:hover {
     color: var(--sg-white);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.15);
 }
-
 .menu-navegacao .ola {
     color: var(--sg-light);
     font-size: 14px;
+    white-space: nowrap;
 }
-
-/* CONTEÚDO PRINCIPAL */
-
+.menu-toggle {
+    display: none;
+}
+/* ============================================================
+   CONTEÚDO PRINCIPAL
+   ============================================================ */
 .conteudo {
     width: 100%;
     max-width: 850px;
@@ -111,44 +111,48 @@ body {
     padding: 0 24px;
     flex: 1 0 auto;
 }
-
-/* CARTÕES */
-
+/* ============================================================
+   CARTÕES
+   ============================================================ */
 .cartao {
     background: var(--sg-white);
     border: 1px solid var(--sg-border);
     border-radius: 14px;
     padding: 40px;
-    box-shadow: 0 8px 24px rgba(0, 61, 48, 0.06);
+    box-shadow: 0 8px 24px rgba(0,61,48,0.06);
 }
-
-/* TIPOGRAFIA */
-
+/* ============================================================
+   Espaçamento entre cartões
+   ============================================================ */
+.cartoes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* ============================================================
+   TIPOGRAFIA
+   ============================================================ */
 h1 {
     margin: 0 0 16px;
     color: var(--sg-forest);
     font-size: 2rem;
     line-height: 1.2;
 }
-
 p {
     margin: 0 0 20px;
 }
-
 p:last-child {
     margin-bottom: 0;
 }
-
 a {
     color: var(--sg-primary);
 }
-
 a:hover {
     color: var(--sg-dark);
 }
-
-/* BOTÕES GERAIS */
-
+/* ============================================================
+   BOTÕES GERAIS
+   ============================================================ */
 .btn {
     display: inline-block;
     padding: 11px 20px;
@@ -159,24 +163,35 @@ a:hover {
     text-decoration: none;
     transition: background-color 0.2s ease;
 }
-
 .btn:hover {
     background: var(--sg-dark);
     color: var(--sg-white);
 }
-
 .btn.secundario {
     background: var(--sg-white);
     color: var(--sg-forest);
     border: 1px solid var(--sg-border);
 }
-
 .btn.secundario:hover {
     background: var(--sg-background);
 }
-
-/* BOTÕES DA PÁGINA INICIAL */
-
+.btnperigo {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 8px;
+    background: var(--sg-danger);
+    color: var(--sg-white);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+.btnperigo:hover {
+    background: var(--sg-dangerdark);
+    color: var(--sg-white);
+}
+/* ============================================================
+   BOTÕES DA PÁGINA INICIAL
+   ============================================================ */
 .acoes-inicio {
     display: flex;
     align-items: center;
@@ -185,7 +200,6 @@ a:hover {
     gap: 16px;
     margin: 24px auto 0;
 }
-
 .btn-acao {
     display: inline-flex;
     align-items: center;
@@ -197,38 +211,124 @@ a:hover {
     font-weight: 600;
     text-align: center;
     text-decoration: none;
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
 .btn-entrar {
     background: var(--sg-forest);
     color: var(--sg-white);
     border: 2px solid var(--sg-forest);
 }
-
 .btn-entrar:hover {
     background: var(--sg-dark);
     border-color: var(--sg-dark);
     color: var(--sg-white);
     transform: translateY(-2px);
 }
-
 .btn-registar {
     background: var(--sg-white);
     color: var(--sg-forest);
     border: 2px solid var(--sg-forest);
 }
-
 .btn-registar:hover {
     background: var(--sg-light);
     color: var(--sg-forest);
     transform: translateY(-2px);
 }
 
-/* MENSAGENS DE SESSÃO */
-
+.btn-sair {
+    background: var(--sg-danger);
+    color: var(--sg-white);
+    border: 2px solid var(--sg-danger);
+}
+.btn-sair:hover {
+    background: var(--sg-dangerdark);
+    color: var(--sg-white);
+    transform: translateY(-2px);
+}
+/* Espaçamento entre o botão Novo Tutor e os cards */
+.barra {
+    margin-bottom: 24px;
+}
+/* ============================================================
+   BOTÕES DE AÇÃO DOS CARTÕES
+   Editar e Apagar com altura e alinhamento iguais
+   ============================================================ */
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.acoes form {
+    margin: 0;
+}
+/* Uniformizar links e botões */
+.acoes .btn,
+.acoes .btnperigo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    min-width: 100px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    line-height: 1;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* ============================================================
+   ScoutGest — Ficha de detalhe do elemento
+   ============================================================ */
+.elemento-detalhe {
+    margin-bottom: 24px;
+}
+.elemento-detalhe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+}
+.elemento-detalhe h2 {
+    color: var(--sg-forest);
+    font-size: 1.2rem;
+    margin: 0 0 20px;
+}
+.elemento-detalhe section {
+    min-width: 0;
+}
+.elemento-detalhe dd {
+    margin: 0 0 14px;
+    overflow-wrap: anywhere;
+}
+.elemento-detalhe dt {
+    color: var(--sg-primary);
+    font-weight: 600;
+}
+.elemento-observacoes {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sg-border);
+}
+.elemento-detalhe-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+/* Mobile */
+@media (max-width: 600px) {
+    .elemento-detalhe-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+/* ============================================================
+   MENSAGENS DE SESSÃO
+   ============================================================ */
 .msg {
     padding: 14px 18px;
     margin-bottom: 24px;
@@ -236,21 +336,38 @@ a:hover {
     background: var(--sg-white);
     border: 1px solid var(--sg-border);
 }
-
 .msg.sucesso {
     background: #E8F5E9;
     color: #1B5E20;
     border-color: #A5D6A7;
 }
-
 .msg.erro {
     background: #FDECEC;
     color: #9B1C1C;
     border-color: #F5B5B5;
 }
 
-/* RODAPÉ */
+/* ============================================================
+   ScoutGest — Mensagens temporárias
+   Desaparecimento automático após 5 segundos
+   ============================================================ */
 
+.mensagem,
+.alerta,
+.sucesso,
+.erro,
+.aviso {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.mensagem-desaparecer {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
 footer {
     width: 100%;
     margin-top: auto;
@@ -261,102 +378,144 @@ footer {
     font-size: 13px;
     color: var(--sg-text);
 }
-
 footer p {
     margin: 0;
 }
-
 footer a {
     color: var(--sg-primary);
     text-decoration: none;
 }
-
 footer a:hover {
     text-decoration: underline;
 }
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 600px) {
-
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 700px) {
     .cabecalho {
-        padding: 14px 18px;
+        min-height: 72px;
+        padding: 10px 18px;
+        gap: 12px;
     }
-
     .logo-container {
-        padding: 16px 20px;
-        border-radius: 12px;
+        padding: 5px 10px;
+        border-radius: 8px;
     }
-
     .logotipo {
-        width: 150px;
+        width: auto;
+        max-width: 135px;
+        height: 45px;
     }
-
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        flex: 0 0 auto;
+        width: 44px;
+        height: 44px;
+        margin-left: auto;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+        cursor: pointer;
+    }
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--sg-white);
+        border-radius: 3px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .menu-toggle.ativo span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.ativo span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.ativo span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .menu-toggle:focus-visible {
+        outline: 3px solid var(--sg-accent);
+        outline-offset: 3px;
+    }
     .menu-navegacao {
-        gap: 8px 12px;
-        margin-top: 14px;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        width: 100%;
+        margin: 0;
+        padding: 12px 18px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--sg-forest);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.2);
     }
-
+    .menu-navegacao.ativo {
+        display: flex;
+    }
     .menu-navegacao a {
-        font-size: 13px;
-        padding: 7px 9px;
+        display: block;
+        padding: 12px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        font-size: 14px;
     }
-
+    .menu-navegacao .ola {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
     .conteudo {
         margin: 30px auto 24px;
         padding: 0 16px;
     }
-
     .cartao {
         padding: 26px 22px;
     }
-
     h1 {
         font-size: 1.6rem;
     }
-
     .acoes-inicio {
         flex-direction: column;
         gap: 12px;
         padding: 0 12px;
     }
-
     .btn-acao {
         width: 100%;
         max-width: 300px;
     }
-
     footer {
         padding: 18px 12px;
         font-size: 12px;
     }
 }
-/* GitHub Pages — Demonstração estática */
-
+/* ============================================================
+   GITHUB PAGES — DEMONSTRAÇÃO ESTÁTICA
+   ============================================================ */
 .aviso-demo {
     margin-top: 24px;
     text-align: center;
     font-size: 13px;
     color: #607568;
 }
-
 .aviso-demo a {
     color: var(--sg-primary);
 }
-
 /* ============================================================
-   ScoutGest — Política de Privacidade
-   Estilos específicos da página privacidade.php
+   POLÍTICA DE PRIVACIDADE
    ============================================================ */
-
-/* CABEÇALHO DA PRIVACIDADE */
-
 .privacy-header {
     background: var(--sg-forest);
     color: var(--sg-white);
     padding: 18px 24px;
 }
-
 .privacy-header-inner {
     max-width: 1000px;
     margin: auto;
@@ -366,7 +525,6 @@ footer a:hover {
     gap: 18px;
     flex-wrap: wrap;
 }
-
 .privacy-brand {
     color: var(--sg-white);
     text-decoration: none;
@@ -374,27 +532,21 @@ footer a:hover {
     font-weight: 750;
     letter-spacing: 0.2px;
 }
-
 .privacy-brand span {
     color: var(--sg-accent);
 }
-
 .privacy-back {
     color: var(--sg-white);
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255,255,255,0.5);
     padding: 7px 14px;
     border-radius: 9px;
 }
-
 .privacy-back:hover,
 .privacy-back:focus-visible {
     color: var(--sg-white);
-    background: rgba(255, 255, 255, 0.11);
+    background: rgba(255,255,255,0.11);
 }
-
-/* CONTEÚDO */
-
 .privacy-wrap {
     width: 100%;
     max-width: 1000px;
@@ -402,106 +554,143 @@ footer a:hover {
     padding: 0 20px;
     flex: 1 0 auto;
 }
-
 .privacy-intro {
     margin-bottom: 25px;
 }
-
 .privacy-intro h1 {
     margin: 0 0 8px;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: var(--sg-forest);
     line-height: 1.2;
 }
-
 .privacy-updated {
     color: #5D6D63;
     font-size: 0.95rem;
 }
-
-/* CARTÃO DA PRIVACIDADE */
-
 .privacy-card {
     background: var(--sg-white);
     border: 1px solid var(--sg-border);
     border-radius: 15px;
     padding: clamp(22px, 4vw, 38px);
-    box-shadow: 0 5px 20px rgba(23, 47, 28, 0.04);
+    box-shadow: 0 5px 20px rgba(23,47,28,0.04);
 }
-
 .privacy-card section + section {
     border-top: 1px solid var(--sg-border);
     margin-top: 24px;
     padding-top: 22px;
 }
-
 .privacy-card h2 {
     color: var(--sg-primary);
     font-size: 1.17rem;
     line-height: 1.35;
     margin: 0 0 10px;
 }
-
 .privacy-card p {
     margin: 0 0 12px;
 }
-
 .privacy-card ul {
     margin: 8px 0 12px;
     padding-left: 24px;
 }
-
 .privacy-card li {
     margin: 5px 0;
 }
-
 .privacy-card a {
     color: var(--sg-primary);
     text-underline-offset: 3px;
 }
-
 .privacy-card a:hover {
     color: var(--sg-dark);
 }
-
-/* NOTAS E INFORMAÇÕES */
-
 .privacy-note {
     background: var(--sg-background);
     border-left: 4px solid var(--sg-accent);
     padding: 13px 17px;
     border-radius: 5px;
 }
-
 .privacy-footer {
     text-align: center;
     color: #5D6D63;
     font-size: 0.9rem;
     margin-top: 26px;
 }
-
-/* ACESSIBILIDADE */
-
 .privacy-wrap :focus-visible,
 .privacy-header :focus-visible {
     outline: 3px solid var(--sg-accent);
     outline-offset: 3px;
 }
-
-/* RESPONSIVIDADE */
-
 @media (max-width: 600px) {
-
     .privacy-header {
         padding: 14px 18px;
     }
-
     .privacy-wrap {
         margin: 30px auto 40px;
         padding: 0 16px;
     }
-
     .privacy-header-inner {
         gap: 12px;
+    }
+}
+/* ============================================================
+   ELEMENTOS — PESQUISA E AÇÕES
+   ============================================================ */
+.elementos-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+.elementos-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+.elementos-pesquisa .campo-pesquisa {
+    width: 280px;
+    max-width: 100%;
+    min-width: 0;
+    padding: 11px 16px;
+    border: 1px solid var(--sg-border);
+    border-radius: 8px;
+    background: var(--sg-white);
+    color: var(--sg-text);
+    font: inherit;
+    line-height: 1.6;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.elementos-pesquisa .campo-pesquisa:focus {
+    border-color: var(--sg-primary);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+.elementos-toolbar .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border: 1px solid transparent;
+    font: inherit;
+    font-weight: bold;
+    line-height: 1.6;
+    white-space: nowrap;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    .elementos-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .elementos-pesquisa {
+        width: 100%;
+    }
+    .elementos-pesquisa .campo-pesquisa {
+        width: 100%;
+        flex: 1;
+    }
+    .elementos-toolbar > .btn {
+        width: 100%;
     }
 }

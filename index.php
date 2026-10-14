@@ -1,4 +1,3 @@
-
 <?php
 // ============================================================
 // ScoutGest — Integração Frontend + Backend
@@ -7,6 +6,9 @@
 
 // Iniciar sessão e ligação à base de dados
 require 'includes/inicio.php';
+
+// Ver se quem está na página é dirigente (o tipo fica na sessão, no login)
+$ehDirigente = ($_SESSION['tipo'] ?? '') === 'Dirigente';
 
 // Definir o título da página
 $titulo = 'Início';
@@ -21,7 +23,14 @@ require 'includes/cabecalho.php';
 
 <section class="cartao">
 
-    <h1>Bem-vindo ao ScoutGest</h1>
+    <h1>
+    Bem-vindo
+    <?php if (isset($_SESSION['id_utilizador'])): ?>
+        <?= htmlspecialchars($_SESSION['nome'] ?? 'Utilizador', ENT_QUOTES, 'UTF-8') ?>,
+    <?php else: ?>
+        ao ScoutGest
+    <?php endif; ?>
+</h1>
 
     <p>
         Aplicação de gestão dos elementos do Agrupamento
@@ -31,10 +40,19 @@ require 'includes/cabecalho.php';
     <?php if (isset($_SESSION['id_utilizador'])): ?>
 
         <!-- Mensagem para utilizadores autenticados -->
-        <p>
-            Já tens sessão iniciada.
-            Podes consultar e gerir os elementos do agrupamento.
-        </p>
+
+<?php if ($ehDirigente): ?>
+    <p>
+        <strong>Já tens sessão iniciada.</strong>
+        Podes consultar e gerir os elementos do agrupamento.
+    </p>
+<?php else: ?>
+    <p>
+        <strong>Já tens sessão iniciada.</strong>
+        Podes consultar o teu tutor e os elementos associados.
+    </p>
+<?php endif; ?>
+
 
     <?php else: ?>
 
@@ -56,15 +74,27 @@ require 'includes/cabecalho.php';
 
     <?php if (isset($_SESSION['id_utilizador'])): ?>
 
-        <!-- Utilizador autenticado -->
-        <a href="elementos.php"
-           class="btn-acao btn-entrar">
-            Ver os elementos
-        </a>
+        <!-- Utilizador autenticado: o primeiro botão depende do perfil -->
+        <?php if ($ehDirigente): ?>
+            <a href="elementos.php"
+               class="btn-acao btn-entrar">
+                Ver os elementos
+            </a>
+        <?php else: ?>
+            <a href="minha_area.php"
+               class="btn-acao btn-entrar">
+                A minha área
+            </a>
+        <?php endif; ?>
 
         <a href="conta.php"
            class="btn-acao btn-registar">
             A minha conta
+        </a>
+
+        <a href="logout.php"
+           class="btn-acao btn-sair">
+            Sair
         </a>
 
     <?php else: ?>
