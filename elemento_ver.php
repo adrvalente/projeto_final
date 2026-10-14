@@ -7,6 +7,7 @@
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
+exige_dirigente();
 
 // BLOCO 2: ver qual é o elemento pedido
 $id = (int) ($_GET['id'] ?? 0);

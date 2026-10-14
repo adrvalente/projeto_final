@@ -2,6 +2,7 @@
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
+exige_dirigente();
 
 // BLOCO 2: pedir à base de dados os tutores, com o número de elementos de cada um
 $stmt = $pdo->prepare(

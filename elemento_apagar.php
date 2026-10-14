@@ -2,6 +2,7 @@
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
+exige_dirigente();
 
 // BLOCO 2: só aceita POST (um link nunca deve apagar dados)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

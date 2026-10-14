@@ -3,6 +3,7 @@
 require 'includes/inicio.php';
 require 'includes/auth.php';
 require 'includes/elemento_funcoes.php';
+exige_dirigente();
 
 // BLOCO 2: valores de partida (lista de erros vazia e formulário em branco)
 $erros = [];
