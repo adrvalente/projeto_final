@@ -21,7 +21,14 @@ require 'includes/cabecalho.php';
 
 <section class="cartao">
 
-    <h1>Bem-vindo ao ScoutGest</h1>
+    <h1>
+    Bem-vindo
+    <?php if (isset($_SESSION['id_utilizador'])): ?>
+        <?= htmlspecialchars($_SESSION['nome'] ?? 'Utilizador', ENT_QUOTES, 'UTF-8') ?>,
+    <?php else: ?>
+        ao ScoutGest
+    <?php endif; ?>
+</h1>
 
     <p>
         Aplicação de gestão dos elementos do Agrupamento
@@ -32,8 +39,8 @@ require 'includes/cabecalho.php';
 
         <!-- Mensagem para utilizadores autenticados -->
         <p>
-            Já tens sessão iniciada.
-            Podes consultar e gerir os elementos do agrupamento.
+            <strong>Já tens sessão iniciada.</strong>
+            Podes consultar e gerir os elementos do agrupamento associados a ti.
         </p>
 
     <?php else: ?>
@@ -65,6 +72,11 @@ require 'includes/cabecalho.php';
         <a href="conta.php"
            class="btn-acao btn-registar">
             A minha conta
+        </a>
+
+        <a href="logout.php"
+           class="btn-acao btn-sair">
+            Sair
         </a>
 
     <?php else: ?>

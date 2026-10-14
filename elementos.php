@@ -1,4 +1,8 @@
 <?php
+// ============================================================
+// ScoutGest — Gestão de Elementos
+// ============================================================
+
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
@@ -14,6 +18,7 @@ $stmt = $pdo->prepare(
      WHERE e.nome LIKE ?
      ORDER BY e.nome'
 );
+
 $stmt->execute(['%' . $q . '%']);
 $elementos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -21,33 +26,83 @@ $elementos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $titulo = 'Elementos';
 require 'includes/cabecalho.php';
 ?>
+
 <h1>Elementos</h1>
 
-<div class="barra">
-    <form method="get" action="elementos.php" class="pesquisa">
-        <input type="search" name="q" placeholder="Pesquisar por nome"
-               value="<?= htmlspecialchars($q) ?>">
-        <button type="submit">Pesquisar</button>
+<!-- Barra de pesquisa e novo elemento -->
+<div class="elementos-toolbar">
+
+    <!-- Pesquisa de elementos -->
+    <form method="get"
+          action="elementos.php"
+          class="elementos-pesquisa">
+
+        <input
+            type="search"
+            name="q"
+            class="campo-pesquisa"
+            placeholder="Pesquisar por nome"
+            aria-label="Pesquisar elementos por nome"
+            value="<?= htmlspecialchars($q, ENT_QUOTES, 'UTF-8') ?>"
+        >
+
+        <button type="submit" class="btn">
+            Pesquisar
+        </button>
+
     </form>
-    <a href="elemento_novo.php" class="btn">+ Novo elemento</a>
+
+    <!-- Adicionar novo elemento -->
+    <a href="elemento_novo.php" class="btn">
+        + Novo elemento
+    </a>
+
 </div>
 
-<?php // BLOCO 5: mostrar os elementos ?>
+<?php
+// BLOCO 5: mostrar os elementos
+?>
+
 <?php if (count($elementos) === 0): ?>
-    <p class="vazio">Não foi encontrado nenhum elemento.</p>
+
+    <p class="vazio">
+        Não foi encontrado nenhum elemento.
+    </p>
+
 <?php else: ?>
+
     <div class="cartoes">
+
         <?php foreach ($elementos as $elemento): ?>
+
             <article class="cartao">
-                <h2><?= htmlspecialchars($elemento['nome']) ?></h2>
+
+                <h2>
+                    <?= htmlspecialchars($elemento['nome'], ENT_QUOTES, 'UTF-8') ?>
+                </h2>
+
                 <p class="meta">
-                    Tutor: <?= htmlspecialchars($elemento['tutor']) ?>
-                    · <?= htmlspecialchars($elemento['seccao']) ?>
+                    Tutor:
+                    <?= htmlspecialchars($elemento['tutor'], ENT_QUOTES, 'UTF-8') ?>
+
+                    ·
+
+                    <?= htmlspecialchars($elemento['seccao'], ENT_QUOTES, 'UTF-8') ?>
                 </p>
-                <a href="elemento_ver.php?id=<?= $elemento['id_elemento'] ?>">Ver detalhe →</a>
+
+                <a href="elemento_ver.php?id=<?= (int) $elemento['id_elemento'] ?>">
+                    Ver detalhe →
+                </a>
+
             </article>
+
         <?php endforeach; ?>
+
     </div>
+
 <?php endif; ?>
-<?php // BLOCO 6: o fundo da página ?>
-<?php require 'includes/rodape.php'; ?>
+
+<?php
+// BLOCO 6: o fundo da página
+require 'includes/rodape.php';
+?>

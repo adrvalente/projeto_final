@@ -42,7 +42,7 @@ require 'includes/cabecalho.php';
                     <form method="post" action="tutor_apagar.php"
                           onsubmit="return confirm('Apagar este tutor?');">
                         <input type="hidden" name="id_tutor" value="<?= $tutor['id_tutor'] ?>">
-                        <button type="submit" class="perigo">Apagar</button>
+                        <button type="submit" class="btnperigo">Apagar</button>
                     </form>
                 </div>
             </article>
