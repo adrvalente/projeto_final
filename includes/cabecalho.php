@@ -1,9 +1,13 @@
-
 <?php
 // ============================================================
 // ScoutGest — Integração Frontend + Backend
 // Ficheiro: includes/cabecalho.php
 // ============================================================
+
+// Iniciar sessão (caso ainda não esteja iniciada)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Identificar a página atual
 $pagina_atual = basename($_SERVER['SCRIPT_NAME'] ?? '');
@@ -19,21 +23,17 @@ $titulo = $titulo ?? 'ScoutGest';
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
         <?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?> · ScoutGest
     </title>
 
     <!-- Favicon -->
-    <link rel="icon"
-          type="image/x-icon"
-          href="img/favicon/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
 
     <!-- CSS principal -->
-    <link rel="stylesheet"
-          href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -47,10 +47,9 @@ $titulo = $titulo ?? 'ScoutGest';
     <!-- Logótipo ScoutGest -->
     <div class="logo-container">
         <a href="index.php" aria-label="Página inicial ScoutGest">
-            <img
-                src="img/logotipo_transp.png"
-                alt="ScoutGest"
-                class="logotipo">
+            <img src="img/logotipo_transp.png"
+                 alt="ScoutGest"
+                 class="logotipo">
         </a>
     </div>
 
@@ -67,41 +66,31 @@ $titulo = $titulo ?? 'ScoutGest';
             <?php if (isset($_SESSION['id_utilizador'])): ?>
 
                 <!-- Menu para utilizadores autenticados -->
-                <a href="elementos.php">
-                    Elementos
-                </a>
+                <?php if (($_SESSION['tipo'] ?? '') === 'Dirigente'): ?>
 
-                <a href="tutores.php">
-                    Tutores
-                </a>
+                    <a href="elementos.php">Elementos</a>
+                    <a href="tutores.php">Tutores</a>
 
-                <a href="conta.php">
-                    A minha conta
-                </a>
+                <?php else: ?>
+
+                    <a href="minha_area.php">A minha área</a>
+
+                <?php endif; ?>
+
+                <a href="conta.php">A minha conta</a>
 
                 <span class="ola">
                     Olá,
-                    <?= htmlspecialchars(
-                        $_SESSION['nome'] ?? '',
-                        ENT_QUOTES,
-                        'UTF-8'
-                    ) ?>
+                    <?= htmlspecialchars($_SESSION['nome'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                 </span>
 
-                <a href="logout.php">
-                    Sair
-                </a>
+                <a href="logout.php">Sair</a>
 
             <?php else: ?>
 
                 <!-- Menu para visitantes -->
-                <a href="login.php">
-                    Entrar
-                </a>
-
-                <a href="registo.php">
-                    Criar conta
-                </a>
+                <a href="login.php">Entrar</a>
+                <a href="registo.php">Criar conta</a>
 
             <?php endif; ?>
 
@@ -118,32 +107,22 @@ $titulo = $titulo ?? 'ScoutGest';
 <main class="conteudo">
 
     <!-- Mensagens temporárias de sessão -->
-    <?php if (
-        isset($_SESSION['msg']) &&
-        is_array($_SESSION['msg'])
-    ): ?>
+    <?php if (isset($_SESSION['msg']) && is_array($_SESSION['msg'])): ?>
 
         <?php
-        $tipo_mensagem = htmlspecialchars(
-            $_SESSION['msg']['tipo'] ?? '',
-            ENT_QUOTES,
-            'UTF-8'
-        );
+        $tipos_validos = ['sucesso', 'erro', 'aviso', 'info'];
+        $tipo_mensagem = in_array($_SESSION['msg']['tipo'] ?? '', $tipos_validos, true)
+            ? $_SESSION['msg']['tipo']
+            : 'info';
 
-        $texto_mensagem = htmlspecialchars(
-            $_SESSION['msg']['texto'] ?? '',
-            ENT_QUOTES,
-            'UTF-8'
-        );
+        $tipo_mensagem  = htmlspecialchars($tipo_mensagem, ENT_QUOTES, 'UTF-8');
+        $texto_mensagem = htmlspecialchars($_SESSION['msg']['texto'] ?? '', ENT_QUOTES, 'UTF-8');
         ?>
 
         <div class="msg <?= $tipo_mensagem ?>" role="status">
             <?= $texto_mensagem ?>
         </div>
 
-        <?php
-        // A mensagem é apresentada apenas uma vez
-        unset($_SESSION['msg']);
-        ?>
+        <?php unset($_SESSION['msg']); ?>
 
     <?php endif; ?>
