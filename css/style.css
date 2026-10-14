@@ -889,3 +889,574 @@ footer a:hover {
     object-fit: contain;
     border-radius: 0;
 }
+
+/* ============================================================
+   ScoutGest — Formulário de Tutores
+   Layout integrado com conta.php
+   ============================================================ */
+
+.tutor-form-pagina {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.tutor-form-cartao {
+    background: #ffffff;
+    border: 1px solid #dce6db;
+    border-radius: 22px;
+    padding: 60px;
+    box-shadow: 0 12px 35px rgba(0, 61, 48, 0.04);
+}
+
+.tutor-form-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.tutor-form-icone {
+    width: 96px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f7f2;
+    color: #003d30;
+    border-radius: 22px;
+    flex-shrink: 0;
+}
+
+.tutor-form-cabecalho-texto h1 {
+    margin: 0 0 12px;
+    font-size: clamp(28px, 3vw, 46px);
+    line-height: 1.2;
+    color: #003d30;
+}
+
+.tutor-form-cabecalho-texto p {
+    margin: 0;
+    color: #607168;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.tutor-form-separador {
+    height: 1px;
+    background: #dce6db;
+    margin: 48px 0;
+}
+
+.tutor-form-titulo-seccao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 36px;
+    color: #003d30;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.tutor-form-grelha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.tutor-form-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.tutor-form-campo label {
+    font-size: 17px;
+    font-weight: 600;
+    color: #344d40;
+}
+
+.tutor-form-campo input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 66px;
+    padding: 16px 20px;
+    border: 1px solid #dce6db;
+    border-radius: 14px;
+    background: #f5f8f4;
+    color: #003d30;
+    font-family: inherit;
+    font-size: 18px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tutor-form-campo input:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.tutor-form-campo input::placeholder {
+    color: #87968b;
+}
+
+.tutor-form-acoes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.tutor-form-cancelar,
+.tutor-form-guardar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 52px;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.tutor-form-cancelar {
+    background: #f3f7f2;
+    border: 1px solid #dce6db;
+    color: #003d30;
+}
+
+.tutor-form-cancelar:hover {
+    background: #e6eee5;
+}
+
+.tutor-form-guardar {
+    background: #003d30;
+    border: 1px solid #003d30;
+    color: #ffffff;
+}
+
+.tutor-form-guardar:hover {
+    background: #14532d;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .tutor-form-pagina {
+        margin: 20px auto;
+    }
+
+    .tutor-form-cartao {
+        padding: 28px 22px;
+        border-radius: 16px;
+    }
+
+    .tutor-form-cabecalho {
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .tutor-form-icone {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+    }
+
+    .tutor-form-cabecalho-texto h1 {
+        font-size: 27px;
+    }
+
+    .tutor-form-cabecalho-texto p {
+        font-size: 15px;
+    }
+
+    .tutor-form-separador {
+        margin: 30px 0;
+    }
+
+    .tutor-form-titulo-seccao {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .tutor-form-grelha {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .tutor-form-campo input {
+        min-height: 56px;
+        font-size: 16px;
+    }
+
+    .tutor-form-acoes {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .tutor-form-cancelar,
+    .tutor-form-guardar {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   ScoutGest — Novo Elemento
+   ============================================================ */
+
+.elemento-form-largura-total {
+    grid-column: 1 / -1;
+}
+
+.tutor-form-campo select,
+.tutor-form-campo textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #dce6db;
+    border-radius: 14px;
+    background: #f5f8f4;
+    color: #003d30;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+.tutor-form-campo select {
+    min-height: 66px;
+    cursor: pointer;
+}
+
+.tutor-form-campo textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.tutor-form-campo select:focus,
+.tutor-form-campo textarea:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+@media (max-width: 768px) {
+    .tutor-form-campo select,
+    .tutor-form-campo textarea {
+        font-size: 16px;
+    }
+
+    .tutor-form-campo select {
+        min-height: 56px;
+    }
+}
+
+/* ============================================================
+   ScoutGest — Página de Login
+   ============================================================ */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 6%;
+    box-sizing: border-box;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 30px;
+    background: #FFFFFF;
+    border: 1px solid #E1E8DF;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0, 61, 48, 0.08);
+    box-sizing: border-box;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    color: var(--sg-forest, #003D30);
+    font-size: 30px;
+    margin: 0 0 10px;
+}
+
+.login-header p {
+    color: #66756B;
+    font-size: 15px;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.login-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-campo label {
+    color: var(--sg-forest, #003D30);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.login-campo input {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    border: 1px solid #CED9CE;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #24352C;
+    font: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-campo input:focus {
+    outline: none;
+    border-color: var(--sg-primary, #2E7D32);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.login-btn {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.login-footer {
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid #E5EBE4;
+    text-align: center;
+}
+
+.login-footer p {
+    color: #66756B;
+    font-size: 14px;
+    margin: 0 0 14px;
+}
+
+.login-btn-criar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 46px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* ============================================================
+   Responsividade — Tablet e Telemóvel
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .login-container {
+        min-height: auto;
+        padding: 32px 16px;
+    }
+
+    .login-card {
+        max-width: 100%;
+        padding: 26px 22px;
+        border-radius: 12px;
+    }
+
+    .login-header h1 {
+        font-size: 26px;
+    }
+
+    .login-form {
+        gap: 18px;
+    }
+}
+
+/* ============================================================
+   SCOUTGEST V2.1 — GESTÃO DE UTILIZADORES
+   Visual coerente com Tutores, Elementos e A Minha Conta
+   ============================================================ */
+.gestao-utilizadores {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 36px 40px;
+}
+.gestao-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.gestao-topo h1 {
+    margin: 0 0 10px;
+    color: var(--sg-forest);
+    font-size: 1.8rem;
+}
+.gestao-topo h1 i { margin-right: 8px; }
+.gestao-topo p { margin: 0; color: #607168; }
+.gestao-total {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 13px;
+    background: var(--sg-background);
+    color: var(--sg-forest);
+    border: 1px solid var(--sg-border);
+    border-radius: 999px;
+    font-size: .88rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.gestao-pesquisa {
+    margin: 0 0 26px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--sg-border);
+}
+.gestao-pesquisa label, .gestao-campo label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--sg-forest);
+    font-weight: 600;
+}
+.gestao-pesquisa-linha { display: flex; align-items: stretch; gap: 10px; }
+.gestao-pesquisa-linha input {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+.gestao-pesquisa input, .gestao-campo select {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 14px;
+    border: 1px solid #ced9ce;
+    border-radius: 8px;
+    background: var(--sg-white);
+    color: var(--sg-text);
+    font: inherit;
+}
+.gestao-pesquisa input:focus, .gestao-campo select:focus {
+    outline: none;
+    border-color: var(--sg-primary);
+    box-shadow: 0 0 0 3px rgba(46,125,50,.12);
+}
+.gestao-botao, .gestao-botao-secundario {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 46px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font: inherit;
+    font-size: .93rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.gestao-botao {
+    color: var(--sg-white);
+    background: var(--sg-primary);
+    border: 1px solid var(--sg-primary);
+}
+.gestao-botao:hover { color: var(--sg-white); background: var(--sg-dark); }
+.gestao-botao-secundario {
+    color: var(--sg-forest);
+    background: var(--sg-white);
+    border: 1px solid var(--sg-border);
+}
+.gestao-botao-secundario:hover { background: var(--sg-background); color: var(--sg-forest); }
+.gestao-lista { display: flex; flex-direction: column; gap: 14px; }
+.gestao-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    background: var(--sg-white);
+    border: 1px solid var(--sg-border);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,61,48,.035);
+}
+.gestao-item-dados { flex: 1 1 auto; min-width: 0; }
+.gestao-item h2 { margin: 0 0 4px; color: var(--sg-forest); font-size: 1.12rem; }
+.gestao-item p { margin: 0 0 12px; color: #607168; overflow-wrap: anywhere; }
+.gestao-etiquetas { display: flex; flex-wrap: wrap; gap: 8px; }
+.gestao-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #edf3eb;
+    color: var(--sg-forest);
+    font-size: .82rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+.gestao-etiqueta.associado { background: #e5f4e7; color: #235a34; }
+.gestao-etiqueta.pendente { background: #fff2db; color: #805a19; }
+.gestao-item > .gestao-botao { flex: 0 0 auto; }
+.gestao-edicao { max-width: 760px; }
+.gestao-resumo {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 26px;
+    padding: 20px;
+    border: 1px solid var(--sg-border);
+    border-radius: 10px;
+    background: var(--sg-background);
+}
+.gestao-resumo span { overflow-wrap: anywhere; }
+.gestao-resumo small, .gestao-campo small { color: #607168; }
+.gestao-formulario { display: grid; gap: 24px; }
+.gestao-campo small { display: block; margin-top: 8px; line-height: 1.5; }
+.gestao-acoes {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sg-border);
+}
+.gestao-erros {
+    margin-bottom: 22px;
+    padding: 16px 20px;
+    border: 1px solid #f5b5b5;
+    border-radius: 9px;
+    background: #fdecec;
+    color: #9b1c1c;
+}
+@media (max-width: 700px) {
+    .gestao-utilizadores { padding: 26px 22px; }
+    .gestao-topo h1 { font-size: 1.5rem; }
+    .gestao-item { align-items: stretch; flex-direction: column; padding: 18px; }
+    .gestao-item > .gestao-botao { width: 100%; }
+}
+@media (max-width: 480px) {
+    .gestao-pesquisa-linha { flex-direction: column; }
+    .gestao-pesquisa-linha > * { width: 100%; }
+    .gestao-pesquisa-linha input { flex-basis: auto; }
+    .gestao-acoes { flex-direction: column-reverse; }
+    .gestao-acoes > * { width: 100%; }
+}

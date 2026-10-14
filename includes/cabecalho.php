@@ -60,6 +60,7 @@ $titulo = $titulo ?? 'ScoutGest';
 
                     <a href="elementos.php">Elementos</a>
                     <a href="tutores.php">Tutores</a>
+                    <a href="utilizadores.php">Utilizadores</a>
 
                 <?php else: ?>
 
