@@ -83,7 +83,7 @@ require 'includes/cabecalho.php';
         <?php else: ?>
             <a href="minha_area.php"
                class="btn-acao btn-entrar">
-                A minha área
+                A minha família
             </a>
         <?php endif; ?>
 

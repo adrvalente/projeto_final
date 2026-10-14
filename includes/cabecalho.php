@@ -21,6 +21,7 @@ $titulo = $titulo ?? 'ScoutGest';
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
+    <script src="https://kit.fontawesome.com/7a6b0262fa.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?> · ScoutGest</title>
@@ -62,7 +63,7 @@ $titulo = $titulo ?? 'ScoutGest';
 
                 <?php else: ?>
 
-                    <a href="minha_area.php">A minha área</a>
+                    <a href="minha_area.php">A minha família</a>
 
                 <?php endif; ?>
 
