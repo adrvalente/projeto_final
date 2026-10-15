@@ -1,8 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest V2.1 — Gestão de Utilizadores
-// Ficheiro: utilizadores.php
+// Gestão de Utilizadores
 // ============================================================
 
 // BLOCO 1: preparar a página

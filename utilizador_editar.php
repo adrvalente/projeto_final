@@ -1,5 +1,8 @@
 <?php
-// ScoutGest V2.1 — Perfil e associação de uma conta a um tutor
+// ============================================================
+// Apagar TutorPerfil e associação de uma conta a um tutor
+// ============================================================
+
 require 'includes/inicio.php';
 require 'includes/auth.php';
 exige_dirigente();
@@ -97,10 +100,80 @@ require 'includes/cabecalho.php';
             </select>
             <small>A conta de tipo Utilizador poderá consultar os elementos associados a este tutor em «A minha família».</small>
         </div>
-        <div class="gestao-acoes">
-            <a href="utilizadores.php" class="gestao-botao-secundario">Cancelar</a>
-            <button type="submit" class="gestao-botao">Guardar alterações</button>
-        </div>
+        
+<div class="gestao-acoes">
+
+    <a
+        href="utilizadores.php"
+        class="gestao-botao-secundario"
+    >
+        Cancelar
+    </a>
+
+    <button
+        type="submit"
+        class="gestao-botao"
+    >
+        <i class="fa-solid fa-floppy-disk"
+           aria-hidden="true"></i>
+         Guardar alterações
+    </button>
+
+</div>
+
+</form>
+
+<!-- ELIMINAR CONTA -->
+<div class="gestao-apagar-area">
+
+    <div class="gestao-apagar-info">
+        <strong>Eliminar conta</strong>
+        <p>
+            Esta ação é permanente e não pode ser anulada.
+        </p>
+    </div>
+
+    <?php if ($id !== (int) $_SESSION['id_utilizador']): ?>
+
+        <form
+            method="post"
+            action="utilizador_apagar.php"
+            onsubmit="return confirm('Tens a certeza de que pretendes apagar esta conta? Esta ação é permanente.');"
+        >
+
+            <input
+                type="hidden"
+                name="id_utilizador"
+                value="<?= (int) $id ?>"
+            >
+
+            <input
+                type="hidden"
+                name="csrf_token"
+                value="<?= htmlspecialchars($_SESSION['csrf_utilizadores'], ENT_QUOTES, 'UTF-8') ?>"
+            >
+
+            <button
+                type="submit"
+                class="gestao-botao-apagar"
+            >
+                <i class="fa-solid fa-trash"
+                   aria-hidden="true"></i>
+                Apagar conta
+            </button>
+
+        </form>
+
+    <?php else: ?>
+
+        <span class="gestao-apagar-bloqueado">
+            Não podes apagar a tua própria conta.
+        </span>
+
+    <?php endif; ?>
+
+</div>
+
     </form>
 </section>
 <?php require 'includes/rodape.php'; ?>

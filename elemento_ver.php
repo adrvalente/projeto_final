@@ -1,7 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest — Ficha de Detalhe do Elemento
+// Ficha de Detalhe do Elemento
 // ============================================================
 
 // BLOCO 1: preparar a página
@@ -149,6 +149,7 @@ require 'includes/cabecalho.php';
             value="<?= (int) $elemento['id_elemento'] ?>"
         >
 
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8') ?>">
         <button type="submit" class="btnperigo">
             Apagar
         </button>
@@ -161,6 +162,6 @@ require 'includes/cabecalho.php';
 </div>
 
 <?php
-// BLOCO 8: o fundo da página
+// BLOCO 8: rodapé da página
 require 'includes/rodape.php';
 ?>

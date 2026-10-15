@@ -1,5 +1,7 @@
 <?php
-
+// ============================================================
+// A minha Família — Página de Consulta do Tutor e Elementos Associados
+// ============================================================
 
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';

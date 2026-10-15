@@ -1,8 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest — Novo Elemento
-// Ficheiro: elemento_novo.php
+// Criar Elemento
 // ============================================================
 
 // BLOCO 1: preparar a página
@@ -24,6 +23,12 @@ $elemento = [
 
 // BLOCO 3: só corre se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Impedir pedidos enviados por páginas externas.
+    if (!csrf_valido()) {
+        http_response_code(403);
+        exit('Pedido inválido. Atualiza a página e tenta novamente.');
+    }
 
     // BLOCO 4: ler e validar os dados
     $elemento = ler_elemento();
@@ -80,20 +85,7 @@ require 'includes/cabecalho.php';
         <div class="tutor-form-cabecalho">
 
             <div class="tutor-form-icone">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="34" height="34"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M20 8v6"/>
-                    <path d="M23 11h-6"/>
-                </svg>
+                <i class="fa-solid fa-user-plus"></i>
             </div>
 
             <div class="tutor-form-cabecalho-texto">
@@ -117,22 +109,10 @@ require 'includes/cabecalho.php';
               id="form-principal"
               class="tutor-form-formulario"
               novalidate>
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8') ?>">
 
             <h2 class="tutor-form-titulo-seccao">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="25" height="25"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M20 8v6"/>
-                    <path d="M23 11h-6"/>
-                </svg>
+                <i class="fa-solid fa-user-plus"></i>
                 Dados do elemento
             </h2>
 
@@ -265,6 +245,7 @@ require 'includes/cabecalho.php';
 </section>
 
 <?php
-// BLOCO 9: rodapé
+// BLOCO 9: rodapé da página
+
 require 'includes/rodape.php';
 ?>

@@ -1,6 +1,6 @@
 
  // ============================================================
- // ScoutGest 
+ // ScoutGest - Javascript de validação do formulário
  // ============================================================
 
 document.addEventListener('DOMContentLoaded', function () {

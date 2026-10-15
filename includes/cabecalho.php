@@ -1,8 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest — Integração Frontend + Backend
-// Ficheiro: includes/cabecalho.php
+// Cabeçalho do site
 // ============================================================
 
 // Garantir que a sessão está iniciada
@@ -27,6 +26,16 @@ $titulo = $titulo ?? 'ScoutGest';
     <title><?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?> · ScoutGest</title>
     <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+    
+<script>
+    // ScoutGest — Proteção ao restaurar páginas do histórico
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });
+</script>
+
 </head>
 
 <body>

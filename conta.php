@@ -2,7 +2,6 @@
 <?php
 // ============================================================
 // ScoutGest — A Minha Conta
-// Ficheiro: conta.php
 // ============================================================
 
 // BLOCO 1: preparar a página (só quem fez login)
@@ -11,6 +10,12 @@ require 'includes/auth.php';
 
 // BLOCO 2: RGPD — direito ao apagamento
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (!csrf_valido()) {
+        mensagem('erro', 'Pedido inválido ou formulário expirado. Tenta novamente.');
+        header('Location: conta.php');
+        exit;
+    }
 
     $stmt = $pdo->prepare(
         'DELETE FROM utilizadores WHERE id_utilizador = ?'
@@ -172,8 +177,9 @@ require 'includes/cabecalho.php';
             );"
         >
 
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8') ?>">
             <button type="submit" class="btnperigo">
-                &#128465; Apagar a minha conta
+                <i class="fa-solid fa-trash-can"></i>  Apagar a minha conta
             </button>
 
         </form>
@@ -183,6 +189,6 @@ require 'includes/cabecalho.php';
 </section>
 
 <?php
-// BLOCO 6: rodapé
+// BLOCO 6: rodapé da página
 require 'includes/rodape.php';
 ?>

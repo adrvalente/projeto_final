@@ -1,7 +1,7 @@
--- ============================================================
--- ScoutGest V1.0 — 
--- UC00615 · Stack A — PHP + PDO + MySQL/MariaDB
--- ============================================================
+// ============================================================
+// ScoutGest — Base de Dados 
+// UC00615 · Stack A — PHP + PDO + MySQL/MariaDB
+// ============================================================
 
 SET NAMES utf8mb4;
 DROP DATABASE IF EXISTS scoutgest;
@@ -13,7 +13,7 @@ CREATE TABLE tutores (
     id_tutor INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
-    email VARCHAR(150) NOT NULL UNIQUE
+    email VARCHAR(150) NULL UNIQUE
 );
 
 -- Utilizadores da aplicação. Um utilizador comum pode ficar associado a um tutor.
@@ -169,5 +169,5 @@ VALUES
 -- Contas de teste (password: Demo1234)
 -- Dirigente: acesso total à gestão
 INSERT INTO utilizadores (nome, email, password_hash, consentimento_em, tipo, id_tutor) VALUES
-('DirTeste', 'dirteste@scoutgest.pt', '$2y$12$wtvyr7Br21NfSwx8lFD1EujFE1Q/5l4NumFPTF4aZ5OVbvUr4/V2m', NOW(), 'Dirigente', NULL),
+('DirTeste', 'admin@scoutgest.pt', '$2y$12$wtvyr7Br21NfSwx8lFD1EujFE1Q/5l4NumFPTF4aZ5OVbvUr4/V2m', NOW(), 'Dirigente', NULL),
 ('Daniela Moreira', 'danmor@userteste.pt', '$2y$12$wtvyr7Br21NfSwx8lFD1EujFE1Q/5l4NumFPTF4aZ5OVbvUr4/V2m', NOW(), 'Utilizador', 14);

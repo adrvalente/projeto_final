@@ -1,4 +1,7 @@
 <?php
+// ============================================================
+// Política de Privacidade AGR 676 Cristo-Rei — ScoutGest
+// ============================================================
 declare(strict_types=1);
 
 // BLOCO 1: Configuração
@@ -20,6 +23,7 @@ function e(string $value): string {
 <html lang="pt-PT">
 
 <head>
+    <script src="https://kit.fontawesome.com/7a6b0262fa.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -66,9 +70,12 @@ function e(string $value): string {
 
     <!-- INTRODUÇÃO -->
 
-    <div class="privacy-intro">
+    <div class="privacy-intro" >
 
-        <h1>Política de Privacidade</h1>
+        <h1>
+            <i class="fa-solid fa-user-secret"></i>
+             Política de Privacidade
+        </h1>
 
         <p class="privacy-updated">
             Última atualização:
@@ -133,7 +140,7 @@ function e(string $value): string {
                 a privacidade, proteção de dados
                 ou exercício dos direitos dos
                 titulares, poderá contactar
-                a Chefia do Agrupamento.
+                a Chefe do Agrupamento - Joana Castro.
             </p>
 
             <p>
@@ -362,7 +369,12 @@ function e(string $value): string {
                 Os titulares podem solicitar
                 a atualização, retificação
                 ou eliminação dos seus dados,
-                nos termos previstos no RGPD.
+                nos termos previstos no <a href="https://www.dgeg.gov.pt/pt/a-dgeg/rgpd-regulamento-geral-de-protecao-de-dados/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Consultar o Regulamento Geral sobre a Proteção de Dados">
+        RGPD
+    </a>.
             </p>
 
         </section>
@@ -439,7 +451,7 @@ function e(string $value): string {
             </ul>
 
             <p>
-                Os encarregados de educação
+                Os encarregados de educação (tutores)
                 podem exercer os direitos
                 relativos aos menores que
                 legalmente representam,
@@ -591,7 +603,7 @@ function e(string $value): string {
                 Para qualquer questão relacionada
                 com a proteção dos seus dados
                 pessoais, poderá contactar
-                a Chefia do Agrupamento através
+                a Chefe do Agrupamento através
                 do endereço:
                 <a href="mailto:<?= e($emailPrivacidade) ?>">
                     <?= e($emailPrivacidade) ?>

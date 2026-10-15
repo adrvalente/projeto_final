@@ -1,8 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest — Iniciar Sessão
-// Ficheiro: login.php
+// Iniciar Sessão
 // ============================================================
 
 require 'includes/inicio.php';

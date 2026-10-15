@@ -1,5 +1,7 @@
 <?php
+// ============================================================
 // Funções usadas por elemento_novo.php e elemento_editar.php
+// ============================================================
 
 // Lê os campos do formulário para um array
 function ler_elemento()
@@ -40,8 +42,13 @@ function validar_elemento($pdo, $elemento)
 
     // A data é opcional, mas se vier preenchida tem de ser válida e não pode ser no futuro
     $data = $elemento['data_nascimento'];
-    if ($data !== '' && (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $data) || $data > date('Y-m-d'))) {
+    if ($data !== '') {
+        $formatoValido = preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $data) === 1;
+        $partes = $formatoValido ? array_map('intval', explode('-', $data)) : [];
+        $dataValida = $formatoValido && checkdate($partes[1], $partes[2], $partes[0]);
+        if (!$dataValida || $data > date('Y-m-d')) {
         $erros[] = 'A data de nascimento não é válida ou está no futuro.';
+        }
     }
 
     return $erros;

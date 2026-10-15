@@ -1,8 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest — Formulário de Tutores
-// Ficheiro: tutor_form.php
+// Formulário de Tutores
 // ============================================================
 
 // BLOCO 1: preparar a página
@@ -22,6 +21,10 @@ $tutor = [
 
 // BLOCO 3: processar o formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (!csrf_valido()) {
+        $erros[] = 'Pedido inválido ou formulário expirado. Atualiza a página.';
+    }
 
     $tutor = [
         'nome' => trim($_POST['nome'] ?? ''),
@@ -49,42 +52,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // BLOCO 5: guardar na base de dados
     if (!$erros) {
 
-        if ($id > 0) {
+        try {
+            if ($id > 0) {
 
-            $stmt = $pdo->prepare(
-                'UPDATE tutores
-                 SET nome = ?, telefone = ?, email = ?
-                 WHERE id_tutor = ?'
-            );
+                $stmt = $pdo->prepare(
+                    'UPDATE tutores
+                     SET nome = ?, telefone = ?, email = ?
+                     WHERE id_tutor = ?'
+                );
 
-            $stmt->execute([
-                $tutor['nome'],
-                $tutor['telefone'],
-                $tutor['email'] ?: null,
-                $id
-            ]);
+                $stmt->execute([
+                    $tutor['nome'],
+                    $tutor['telefone'],
+                    $tutor['email'] ?: null,
+                    $id
+                ]);
 
-            mensagem('sucesso', 'Tutor atualizado.');
+                mensagem('sucesso', 'Tutor atualizado.');
 
-        } else {
+            } else {
 
-            $stmt = $pdo->prepare(
-                'INSERT INTO tutores
-                 (nome, telefone, email)
-                 VALUES (?, ?, ?)'
-            );
+                $stmt = $pdo->prepare(
+                    'INSERT INTO tutores
+                     (nome, telefone, email)
+                     VALUES (?, ?, ?)'
+                );
 
-            $stmt->execute([
-                $tutor['nome'],
-                $tutor['telefone'],
-                $tutor['email'] ?: null
-            ]);
+                $stmt->execute([
+                    $tutor['nome'],
+                    $tutor['telefone'],
+                    $tutor['email'] ?: null
+                ]);
 
-            mensagem('sucesso', 'Tutor criado.');
+                mensagem('sucesso', 'Tutor criado.');
+            }
+
+        } catch (PDOException $e) {
+            if ($e->getCode() === '23000') {
+                $erros[] = 'Este email já está associado a outro tutor.';
+            } else {
+                throw $e;
+            }
         }
-
-        header('Location: tutores.php');
-        exit;
+        if (!$erros) {
+            header('Location: tutores.php');
+            exit;
+        }
     }
 
 // BLOCO 6: carregar tutor para edição
@@ -131,20 +144,7 @@ require 'includes/cabecalho.php';
         <div class="tutor-form-cabecalho">
 
             <div class="tutor-form-icone">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="34" height="34"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M20 8v6"/>
-                    <path d="M23 11h-6"/>
-                </svg>
+                <i class="fa-solid fa-user-plus"></i>
             </div>
 
             <div class="tutor-form-cabecalho-texto">
@@ -166,22 +166,10 @@ require 'includes/cabecalho.php';
               class="tutor-form-formulario"
               novalidate>
 
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8') ?>">
             <h2 class="tutor-form-titulo-seccao">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="25" height="25"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M20 8v6"/>
-                    <path d="M23 11h-6"/>
-                </svg>
-                Dados do tutor
+                <i class="fa-solid fa-user-plus"></i>
+                 Dados do tutor
             </h2>
 
             <div class="tutor-form-grelha">
@@ -250,7 +238,9 @@ require 'includes/cabecalho.php';
 
                 <button type="submit"
                         class="tutor-form-guardar">
-                    <?= $id > 0 ? 'Guardar alterações' : 'Guardar tutor' ?>
+                    <i class="fa-solid fa-floppy-disk"
+           aria-hidden="true"></i> Guardar alterações
+
                 </button>
 
             </div>
@@ -262,6 +252,6 @@ require 'includes/cabecalho.php';
 </section>
 
 <?php
-// BLOCO 9: rodapé
+// BLOCO 9: rodapé da página
 require 'includes/rodape.php';
 ?>

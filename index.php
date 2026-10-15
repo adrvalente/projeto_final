@@ -1,7 +1,6 @@
 <?php
 // ============================================================
-// ScoutGest — Integração Frontend + Backend
-// Ficheiro: index.php
+// Index — Página Inicial
 // ============================================================
 
 // Iniciar sessão e ligação à base de dados
