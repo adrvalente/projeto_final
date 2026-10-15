@@ -1,8 +1,7 @@
 
 <?php
 // ============================================================
-// ScoutGest — Integração Frontend + Backend
-// Ficheiro: includes/rodape.php
+// Rodapé do site
 // ============================================================
 ?>
 

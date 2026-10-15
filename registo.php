@@ -1,21 +1,30 @@
+
 <?php
+// ============================================================
+// Criar Conta
+// ============================================================
+
 require 'includes/inicio.php';
 
+// BLOCO 1: verificar se já existe sessão
 if (isset($_SESSION['id_utilizador'])) {
     header('Location: index.php');
     exit;
 }
 
+// BLOCO 2: valores iniciais
 $erros = [];
 $nome  = '';
 $email = '';
 
+// BLOCO 3: processar o registo
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $nome     = trim($_POST['nome'] ?? '');
     $email    = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // 1. Validar no servidor
+    // Validar os dados no servidor
     if ($nome === '' || mb_strlen($nome) > 100) {
         $erros[] = 'O nome é obrigatório e não pode ter mais de 100 caracteres.';
     }
@@ -32,22 +41,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros[] = 'Tens de aceitar a política de privacidade.';
     }
 
-    // 2. O email não pode estar repetido
+    // Verificar se o email já existe
     if (!$erros) {
-        $stmt = $pdo->prepare('SELECT id_utilizador FROM utilizadores WHERE email = ?');
+        $stmt = $pdo->prepare(
+            'SELECT id_utilizador FROM utilizadores WHERE email = ?'
+        );
         $stmt->execute([$email]);
+
         if ($stmt->fetch()) {
             $erros[] = 'Já existe uma conta com esse email.';
         }
     }
 
-    // 3. Guardar: a password nunca é guardada, só o seu hash
+    // Criar a conta
     if (!$erros) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
+
         $stmt = $pdo->prepare(
-            'INSERT INTO utilizadores (nome, email, password_hash, consentimento_em)
+            'INSERT INTO utilizadores
+             (nome, email, password_hash, consentimento_em)
              VALUES (?, ?, ?, NOW())'
         );
+
         $stmt->execute([$nome, $email, $hash]);
 
         mensagem('sucesso', 'Conta criada. Já podes iniciar sessão.');
@@ -56,43 +71,116 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// BLOCO 4: apresentar a página
 $titulo = 'Criar conta';
 require 'includes/cabecalho.php';
 ?>
 
-<h1>Criar conta</h1>
+<!-- ============================================================
+     CARTÃO DE REGISTO
+     ============================================================ -->
 
-<?php require 'includes/erros.php'; ?>
+<main class="pagina-autenticacao">
 
-<form action="registo.php" method="post" id="form-principal" novalidate>
-    <p>
-        <label for="nome">Nome</label><br>
-        <input type="text" id="nome" name="nome" maxlength="100"
-               value="<?= htmlspecialchars($nome) ?>" required>
-    </p>
+    <section class="cartao cartao-autenticacao">
 
-    <p>
-        <label for="email">Email</label><br>
-        <input type="email" id="email" name="email" maxlength="150"
-               value="<?= htmlspecialchars($email) ?>" required>
-    </p>
+        <div class="autenticacao-cabecalho">
+            <h1>Criar conta</h1>
+            <p>
+                Preenche os dados para criares a tua conta
+                no ScoutGest.
+            </p>
+        </div>
 
-    <p>
-        <label for="password">Password (mínimo 8 caracteres)</label><br>
-        <input type="password" id="password" name="password" required minlength="8">
-    </p>
+        <?php require 'includes/erros.php'; ?>
 
-    <p>
-        <label for="consentimento">
-            <input type="checkbox" id="consentimento" name="consentimento" value="1" required>
-            Li e aceito a <a href="privacidade.php" target="_blank">política de privacidade</a>.
-        </label>
-    </p>
+        <form
+            action="registo.php"
+            method="post"
+            id="form-principal"
+            class="formulario"
+            novalidate
+        >
 
-    <p>
-        <button type="submit" class="btn">Criar conta</button>
-        <a href="login.php" class="btn secundario">Já tenho conta</a>
-    </p>
-</form>
+            <!-- Nome -->
+            <div class="campo-formulario">
+                <label for="nome">Nome completo</label>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    maxlength="100"
+                    autocomplete="name"
+                    value="<?= htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') ?>"
+                    placeholder="Introduz o teu nome"
+                    required
+                >
+            </div>
+
+            <!-- Email -->
+            <div class="campo-formulario">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    maxlength="150"
+                    autocomplete="email"
+                    value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>"
+                    placeholder="Introduz o teu email"
+                    required
+                >
+            </div>
+
+            <!-- Password -->
+            <div class="campo-formulario">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    placeholder="Mínimo de 8 caracteres"
+                    required
+                >
+            </div>
+
+            <!-- Consentimento -->
+            <div class="campo-consentimento">
+                <label for="consentimento">
+                    <input
+                        type="checkbox"
+                        id="consentimento"
+                        name="consentimento"
+                        value="1"
+                        required
+                        <?= isset($_POST['consentimento']) ? 'checked' : '' ?>
+                    >
+                    <span>
+                        Li e aceito a
+                        <a href="privacidade.php" target="_blank" rel="noopener noreferrer">
+                            política de privacidade
+                        </a>.
+                    </span>
+                </label>
+            </div>
+
+            <!-- Botões -->
+            <div class="autenticacao-acoes">
+                <button type="submit" class="btn">
+                    Criar conta
+                </button>
+
+                <a href="login.php" class="btn secundario">
+                    Já tenho conta
+                </a>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
 
 <?php require 'includes/rodape.php'; ?>

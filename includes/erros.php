@@ -1,4 +1,8 @@
-<?php // Lista de erros da validação no servidor (se houver) ?>
+<?php 
+// ============================================================
+// Lista de erros da validação no servidor (se houver)
+// ============================================================
+ ?>
 <?php if (!empty($erros)): ?>
     <div class="msg erro">
         Corrige o seguinte:

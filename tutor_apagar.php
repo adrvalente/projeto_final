@@ -1,4 +1,8 @@
 <?php
+// ============================================================
+// Apagar Tutor
+// ============================================================
+
 // BLOCO 1: preparar a página
 require 'includes/inicio.php';
 require 'includes/auth.php';
@@ -10,10 +14,23 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+if (!csrf_valido()) {
+    mensagem('erro', 'Pedido inválido ou formulário expirado. Tenta novamente.');
+    header('Location: tutores.php');
+    exit;
+}
+
+$idApagar = filter_var($_POST['id_tutor'] ?? null, FILTER_VALIDATE_INT);
+if (!$idApagar || $idApagar < 1) {
+    mensagem('erro', 'Identificador inválido.');
+    header('Location: tutores.php');
+    exit;
+}
+
 // BLOCO 3: tentar apagar o tutor
 try {
     $stmt = $pdo->prepare('DELETE FROM tutores WHERE id_tutor = ?');
-    $stmt->execute([(int) ($_POST['id_tutor'] ?? 0)]);
+    $stmt->execute([$idApagar]);
     mensagem('sucesso', 'Tutor apagado.');
 
 // BLOCO 4: se a base de dados recusar, explicar porquê
