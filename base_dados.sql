@@ -165,5 +165,5 @@ VALUES
 -- Contas de teste (password: Demo1234)
 -- Dirigente: acesso total à gestão
 INSERT INTO utilizadores (nome, email, password_hash, consentimento_em, tipo, id_tutor) VALUES
-('Administrator', 'admin@scoutgest.pt', '$2y$12$wtvyr7Br21NfSwx8lFD1EujFE1Q/5l4NumFPTF4aZ5OVbvUr4/V2m', NOW(), 'Dirigente', NULL),
+('Admin', 'admin@scoutgest.pt', '$2y$12$wtvyr7Br21NfSwx8lFD1EujFE1Q/5l4NumFPTF4aZ5OVbvUr4/V2m', NOW(), 'Dirigente', NULL),
 ('Daniela Moreira', 'danmor@userteste.pt', '$2y$12$wtvyr7Br21NfSwx8lFD1EujFE1Q/5l4NumFPTF4aZ5OVbvUr4/V2m', NOW(), 'Utilizador', 14);

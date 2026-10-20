@@ -1,4 +1,3 @@
-
 <?php
 // ============================================================
 // ScoutGest — Iniciar Sessão
@@ -119,42 +118,25 @@ require 'includes/cabecalho.php';
 
         <?php require 'includes/erros.php'; ?>
 
-        <form
-            action="login.php"
-            method="post"
-            class="login-form"
-        >
+        <form action="login.php" method="post" class="login-form">
 
             <!-- Proteção CSRF -->
-            <input
-                type="hidden"
-                name="csrf_token"
-                value="<?= htmlspecialchars(
-                    csrf_token(),
-                    ENT_QUOTES,
-                    'UTF-8'
-                ) ?>"
-            >
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(
+                csrf_token(),
+                ENT_QUOTES,
+                'UTF-8'
+            ) ?>">
 
             <!-- Email -->
             <div class="login-campo">
 
                 <label for="email">Email</label>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value="<?= htmlspecialchars(
-                        $email,
-                        ENT_QUOTES,
-                        'UTF-8'
-                    ) ?>"
-                    placeholder="exemplo@email.pt"
-                    autocomplete="username"
-                    maxlength="150"
-                    required
-                >
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars(
+                    $email,
+                    ENT_QUOTES,
+                    'UTF-8'
+                ) ?>" placeholder="exemplo@email.pt" autocomplete="username" maxlength="150" required>
 
             </div>
 
@@ -163,22 +145,19 @@ require 'includes/cabecalho.php';
 
                 <label for="password">Password</label>
 
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Introduz a tua password"
-                    autocomplete="current-password"
-                    required
-                >
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+
+                    <button type="button" class="password-toggle" id="togglePassword" aria-label="Mostrar password"
+                        aria-pressed="false">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
 
             </div>
 
             <!-- Botão entrar -->
-            <button
-                type="submit"
-                class="btn login-btn"
-            >
+            <button type="submit" class="btn login-btn">
                 Entrar
             </button>
 
@@ -189,10 +168,7 @@ require 'includes/cabecalho.php';
 
             <p>Ainda não tens conta?</p>
 
-            <a
-                href="registo.php"
-                class="btn secundario login-btn-criar"
-            >
+            <a href="registo.php" class="btn secundario login-btn-criar">
                 Criar conta
             </a>
 
@@ -203,3 +179,34 @@ require 'includes/cabecalho.php';
 </section>
 
 <?php require 'includes/rodape.php'; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const password = document.getElementById('password');
+    const toggle = document.getElementById('togglePassword');
+
+    if (!password || !toggle) return;
+
+    toggle.addEventListener('click', function () {
+
+        const mostrar = password.type === 'password';
+
+        password.type = mostrar ? 'text' : 'password';
+
+        const icon = toggle.querySelector('i');
+
+        icon.classList.toggle('fa-eye', !mostrar);
+        icon.classList.toggle('fa-eye-slash', mostrar);
+
+        toggle.setAttribute(
+            'aria-label',
+            mostrar ? 'Ocultar password' : 'Mostrar password'
+        );
+
+        toggle.setAttribute('aria-pressed', String(mostrar));
+
+    });
+
+});
+</script>

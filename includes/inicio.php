@@ -12,7 +12,7 @@ header('Expires: 0');
 
 // BLOCO 2: configuração da sessão
 // Tempo máximo de inatividade: 15 minutos
-$sessionLifetime = 900;
+$sessionLifetime = 60; //60 porque é demonstração, mas o ideal é 900 (15 minutos)
 
 ini_set('session.gc_maxlifetime', (string) $sessionLifetime);
 ini_set('session.use_strict_mode', '1');

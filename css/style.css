@@ -68,6 +68,52 @@ body {
     object-fit: contain;
 }
 /* ============================================================
+   ScoutGest — Mostrar/Ocultar Password
+   ============================================================ */
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 55px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+    color: #5d6d63;
+
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.password-toggle:hover {
+    color: #2E7D32;
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid #2E7D32;
+    outline-offset: 2px;
+}
+
+/* ============================================================
    MENU DESKTOP
    ============================================================ */
 .menu-navegacao {
